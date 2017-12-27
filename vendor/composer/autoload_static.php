@@ -783,6 +783,7 @@ class ComposerStaticInita52629d0457e5485e0de44d92ee8c7be
         'SebastianBergmann\\Version' => __DIR__ . '/..' . '/sebastian/version/src/Version.php',
         'TestCase' => __DIR__ . '/../..' . '/tests/TestCase.php',
         'Text_Template' => __DIR__ . '/..' . '/phpunit/php-text-template/src/Template.php',
+        'UpdatePostTable' => __DIR__ . '/../..' . '/database/migrations/2017_12_26_112602_update_post_table.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

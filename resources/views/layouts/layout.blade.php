@@ -13,6 +13,9 @@
 
 <body>
     @include('layouts.navbar')
+    <br>
+    <br>
+    <br>
     @yield('content')
     
 

@@ -526,4 +526,5 @@ return array(
     'SebastianBergmann\\Version' => $vendorDir . '/sebastian/version/src/Version.php',
     'TestCase' => $baseDir . '/tests/TestCase.php',
     'Text_Template' => $vendorDir . '/phpunit/php-text-template/src/Template.php',
+    'UpdatePostTable' => $baseDir . '/database/migrations/2017_12_26_112602_update_post_table.php',
 );
