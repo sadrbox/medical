@@ -28,5 +28,7 @@ class PasswordController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
+        session()->forget('breadcrumbs');
+        $this->Breadcrumbs(trans('app.panel'));
     }
 }

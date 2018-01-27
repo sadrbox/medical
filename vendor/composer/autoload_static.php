@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInita52629d0457e5485e0de44d92ee8c7be
+class ComposerStaticInitd44c6288acec3d1e2ce2b48116e73f55
 {
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
@@ -14,8 +14,10 @@ class ComposerStaticInita52629d0457e5485e0de44d92ee8c7be
         '2c102faa651ef8ea5874edb585946bce' => __DIR__ . '/..' . '/swiftmailer/swiftmailer/lib/swift_required.php',
         '5255c38a0faeba867671b61dfda6d864' => __DIR__ . '/..' . '/paragonie/random_compat/lib/random.php',
         'e7223560d890eab89cda23685e711e2c' => __DIR__ . '/..' . '/psy/psysh/src/Psy/functions.php',
+        'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
         'f0906e6318348a765ffb6eb24e0d0938' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/helpers.php',
         '58571171fd5812e6e447dce228f52f4d' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/helpers.php',
+        'f18cc91337d49233e5754e93f3ed9ec3' => __DIR__ . '/..' . '/laravelcollective/html/src/helpers.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -55,6 +57,7 @@ class ComposerStaticInita52629d0457e5485e0de44d92ee8c7be
         array (
             'Psy\\' => 4,
             'Psr\\Log\\' => 8,
+            'Psr\\Http\\Message\\' => 17,
             'PhpParser\\' => 10,
         ),
         'M' => 
@@ -67,7 +70,12 @@ class ComposerStaticInita52629d0457e5485e0de44d92ee8c7be
         ),
         'I' => 
         array (
+            'Intervention\\Image\\' => 19,
             'Illuminate\\' => 11,
+        ),
+        'G' => 
+        array (
+            'GuzzleHttp\\Psr7\\' => 16,
         ),
         'F' => 
         array (
@@ -81,6 +89,7 @@ class ComposerStaticInita52629d0457e5485e0de44d92ee8c7be
         'C' => 
         array (
             'Cron\\' => 5,
+            'Collective\\Html\\' => 16,
             'ClassPreloader\\' => 15,
             'Carbon\\' => 7,
         ),
@@ -181,6 +190,10 @@ class ComposerStaticInita52629d0457e5485e0de44d92ee8c7be
         array (
             0 => __DIR__ . '/..' . '/psr/log/Psr/Log',
         ),
+        'Psr\\Http\\Message\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/http-message/src',
+        ),
         'PhpParser\\' => 
         array (
             0 => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser',
@@ -193,9 +206,17 @@ class ComposerStaticInita52629d0457e5485e0de44d92ee8c7be
         array (
             0 => __DIR__ . '/..' . '/league/flysystem/src',
         ),
+        'Intervention\\Image\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/intervention/image/src/Intervention/Image',
+        ),
         'Illuminate\\' => 
         array (
             0 => __DIR__ . '/..' . '/laravel/framework/src/Illuminate',
+        ),
+        'GuzzleHttp\\Psr7\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/guzzlehttp/psr7/src',
         ),
         'Faker\\' => 
         array (
@@ -212,6 +233,10 @@ class ComposerStaticInita52629d0457e5485e0de44d92ee8c7be
         'Cron\\' => 
         array (
             0 => __DIR__ . '/..' . '/mtdowling/cron-expression/src/Cron',
+        ),
+        'Collective\\Html\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/laravelcollective/html/src',
         ),
         'ClassPreloader\\' => 
         array (
@@ -263,8 +288,17 @@ class ComposerStaticInita52629d0457e5485e0de44d92ee8c7be
     );
 
     public static $classMap = array (
+        'AdMainPageToArticles' => __DIR__ . '/../..' . '/database/migrations/2018_01_21_102241_ad_mainPage_to_articles.php',
+        'AdNavigationItemToPages' => __DIR__ . '/../..' . '/database/migrations/2018_01_21_102119_ad_navigation_item_to_pages.php',
+        'AdParentIdToPages' => __DIR__ . '/../..' . '/database/migrations/2018_01_18_121138_ad_parentId_to_pages.php',
+        'CreateArticlesTable' => __DIR__ . '/../..' . '/database/migrations/2018_01_12_154814_create_articles_table.php',
+        'CreateCallsTable' => __DIR__ . '/../..' . '/database/migrations/2018_01_18_072300_create_calls_table.php',
+        'CreateCategoriesTable' => __DIR__ . '/../..' . '/database/migrations/2018_01_05_141131_create_categories_table.php',
+        'CreatePagesTable' => __DIR__ . '/../..' . '/database/migrations/2018_01_12_154628_create_pages_table.php',
+        'CreatePartnersTable' => __DIR__ . '/../..' . '/database/migrations/2018_01_26_061018_create_partners_table.php',
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
-        'CreatePostsTable' => __DIR__ . '/../..' . '/database/migrations/2017_12_25_182326_create_posts_table.php',
+        'CreateProductsTable' => __DIR__ . '/../..' . '/database/migrations/2018_01_06_082954_create_products_table.php',
+        'CreateTasksTable' => __DIR__ . '/../..' . '/database/migrations/2018_01_04_152611_create_tasks_table.php',
         'CreateUsersTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_000000_create_users_table.php',
         'DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeds/DatabaseSeeder.php',
         'File_Iterator' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Iterator.php',
@@ -744,7 +778,6 @@ class ComposerStaticInita52629d0457e5485e0de44d92ee8c7be
         'PHP_Token_XOR_EQUAL' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_YIELD' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
         'PHP_Token_YIELD_FROM' => __DIR__ . '/..' . '/phpunit/php-token-stream/src/Token.php',
-        'PostsTableSeeder' => __DIR__ . '/../..' . '/database/seeds/PostsTableSeeder.php',
         'SebastianBergmann\\Comparator\\ArrayComparator' => __DIR__ . '/..' . '/sebastian/comparator/src/ArrayComparator.php',
         'SebastianBergmann\\Comparator\\Comparator' => __DIR__ . '/..' . '/sebastian/comparator/src/Comparator.php',
         'SebastianBergmann\\Comparator\\ComparisonFailure' => __DIR__ . '/..' . '/sebastian/comparator/src/ComparisonFailure.php',
@@ -781,18 +814,18 @@ class ComposerStaticInita52629d0457e5485e0de44d92ee8c7be
         'SebastianBergmann\\RecursionContext\\Exception' => __DIR__ . '/..' . '/sebastian/recursion-context/src/Exception.php',
         'SebastianBergmann\\RecursionContext\\InvalidArgumentException' => __DIR__ . '/..' . '/sebastian/recursion-context/src/InvalidArgumentException.php',
         'SebastianBergmann\\Version' => __DIR__ . '/..' . '/sebastian/version/src/Version.php',
+        'Task' => __DIR__ . '/../..' . '/database/seeds/Task.php',
         'TestCase' => __DIR__ . '/../..' . '/tests/TestCase.php',
         'Text_Template' => __DIR__ . '/..' . '/phpunit/php-text-template/src/Template.php',
-        'UpdatePostTable' => __DIR__ . '/../..' . '/database/migrations/2017_12_26_112602_update_post_table.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInita52629d0457e5485e0de44d92ee8c7be::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInita52629d0457e5485e0de44d92ee8c7be::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInita52629d0457e5485e0de44d92ee8c7be::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInita52629d0457e5485e0de44d92ee8c7be::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitd44c6288acec3d1e2ce2b48116e73f55::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitd44c6288acec3d1e2ce2b48116e73f55::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInitd44c6288acec3d1e2ce2b48116e73f55::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInitd44c6288acec3d1e2ce2b48116e73f55::$classMap;
 
         }, null, ClassLoader::class);
     }
