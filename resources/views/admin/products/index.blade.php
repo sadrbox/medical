@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
 <div class="container">
@@ -58,6 +58,11 @@
         </div>
     </div>
 </div>
+<style>
+    .table td{
+        vertical-align:middle !important;
+    }
+</style>
 @endsection
 
 @section('script')

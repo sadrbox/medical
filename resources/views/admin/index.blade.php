@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
 <div class="container">
@@ -48,7 +48,7 @@
                         @foreach($calls as $call)
                         <tr>
                             <td>
-                                <input class="done" type="checkbox" style="height:30px;width:30px;"  link="{{url()->route('admin.call.done', ['call'=>$call->id])}}" {{ ($call->done == true) ? 'checked' : '' }} />
+                                <input disabled="disabled" class="done" type="checkbox" style="height:30px;width:30px;"  link="{{url()->route('admin.call.done', ['call'=>$call->id])}}" {{ ($call->done == true) ? 'checked' : '' }} />
                             </td>
                             <td>{{ $call->name }}</td>
                             <td>{{ $call->phone }}</td>
@@ -60,11 +60,17 @@
         </div>
     </div>
 </div>
+<style>
+    .table td{
+        vertical-align:middle !important;
+    }
+</style>
 @endsection
 
 @section('script')
 <script>
 $(function(){
+    $('[type=checkbox]').removeAttr('disabled');
     $(".done").on('change', function(event){
         event.preventDefault();
         var $check = $(this);

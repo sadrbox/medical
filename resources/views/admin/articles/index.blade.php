@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
 <div class="container">
@@ -11,7 +11,6 @@
                         <tr>
                             <th>Создан</th>
                             <th>Заголовок</th>
-                            {{--<th>Текст</th>--}}
                             <th>Категория</th>
                             <th>Автор</th>
                             <th></th>
@@ -19,8 +18,7 @@
                         @foreach($articles as $article)
                         <tr>
                             <td>{{ date('d.m.Y', strtotime($article->created_at)) }}</td>
-                            <td>{{ str_limit($article->title, 50) }} {{-- link_to_route('admin.article.show', str_limit($article->title, 50), [$article->id]) --}}</td>
-                            {{--<td>{{ str_limit(strip_tags($article->text), 50) }}</td>--}}
+                            <td>{{ str_limit($article->title, 50) }}</td>
                             <td>{{ $article->category->title or "-" }}</td>
                             <td>{{ $article->user->name or "-" }}</td>
                             <td>
@@ -52,6 +50,11 @@
         </div>
     </div>
 </div>
+<style>
+    .table td{
+         line-height: 35px !important;
+    }
+</style>
 @endsection
 
 @section('script')

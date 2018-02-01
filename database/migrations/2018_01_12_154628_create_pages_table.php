@@ -5,11 +5,6 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreatePagesTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create('pages', function (Blueprint $table) {
@@ -18,6 +13,8 @@ class CreatePagesTable extends Migration
             $table->text('text');
             $table->integer('category_id');
             $table->integer('parent_id')->nullable();
+            $table->boolean('main_page')->nullable();
+            $table->boolean('navigation')->nullable();
             $table->integer('user_id')->nullable();
             $table->timestamps();
         });

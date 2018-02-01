@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
 <div class="container"> 
@@ -8,7 +8,7 @@
                 <div class="panel-heading">{{ trans('app.new') }}</div>
                 <form action="{{ url()->route('admin.article.store') }}" method="POST" enctype="multipart/form-data">
                     {{csrf_field()}}
-                    <input type="hidden" name="user_id" value="{{auth()->user()->id }}" />
+                    <input type="hidden" name="user_id" value="{{ auth()->user()->id }}" />
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-md-8">

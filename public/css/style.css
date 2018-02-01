@@ -335,3 +335,20 @@ section.footer{
     background-color: #fff;
     border: 1px solid #ddd;
 }
+
+input[type=checkbox], input[type=radio]{
+    margin-top:0px !important;
+    vertical-align: middle !important;
+    min-height:20px;
+    min-width:20px;
+}
+
+/************/
+#uLogin{
+    padding-top:10px;
+}
+
+.avatar{
+    max-height: 32px;
+    max-width: 32px;
+}

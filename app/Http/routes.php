@@ -1,25 +1,12 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Application Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register all of the routes for an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the controller to call when that URI is requested. 
-|
-*/
-
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
 Route::get('/', 'SiteController@index');
+// Route::post('/', 'SiteController@index');
 
 Route::group(['prefix'=>'site'], function(){
     Route::get('/', 'SiteController@index')->name('site.index'); 
-     
+    // Route::post('/', 'SiteController@index');
+    
     Route::get('/article/{category?}', 'SiteController@article')->name('site.article');
     Route::get('/article/show/{article}', 'SiteController@articleShow')->name('site.article.show');
     
@@ -33,39 +20,65 @@ Route::group(['prefix'=>'site'], function(){
     Route::post('/querycallme', 'SiteController@queryCallMe')->name('site.querycallme');
 });
 
+/* Models manager in admin */
+Route::group(['prefix'=>'admin','middleware'=>'auth:admin'], function(){
 
-Route::group(['prefix'=>'admin'], function(){
-    Route::auth();
-    Route::group(['middleware'=>'auth'], function(){
-        Route::get('/', 'AdminController@index')->name('admin.index');
-        Route::post('upload', 'AdminController@upload');
-        Route::resource('article', 'ArticleController');
-        Route::resource('page', 'PageController');
-        Route::resource('product', 'ProductController');
-        Route::resource('category', 'CategoryController');
-        Route::resource('call', 'CallController');
-        Route::get('call/done/{call}', 'CallController@done')->name('admin.call.done');
-    });
+    Route::get('/', 'AdminController@index')->name('admin.index');
+    Route::post('upload', 'AdminController@upload');
+    Route::resource('article', 'ArticleController');
+    Route::resource('page', 'PageController');
+    Route::resource('product', 'ProductController');
+    Route::resource('category', 'CategoryController');
+    Route::resource('call', 'CallController');
+    Route::get('call/done/{call}', 'CallController@done')->name('admin.call.done');
+    
+    /******************************/
+    Route::get('partner', 'PartnerController@index')->name('admin.partner.index');
+    Route::get('partner/partnership/{partner}', 'PartnerController@partnership')->name('admin.partner.partnership');
+    Route::get('partner/profile/{partner}', 'PartnerController@profile')->name('admin.partner.profile');
+    Route::post('partner/destroy', 'PartnerController@destroy')->name('admin.partner.destroy');
 });
 
-// Route::get('/getpreview64/{path}', 'ToolController@getpreview64')->name('tool.getpreview64');
+/* Models manager in partners*/
+Route::group(['prefix'=>'partner','middleware'=>'auth:partner'], function(){
+    Route::get('/', 'SiteController@index'); 
+    Route::get('profile', 'PartnerController@profile')->name('partner.profile');
+});
 
 
-Route::group(['prefix'=>'partner'], function(){
+/* Administrator authenticate */
+Route::group(['prefix'=>'admin'], function(){
     
-    Route::get('/', 'PartnerController@index');
-    
-    // Authentication Routes...
-    Route::get('login', 'PartnerController@showLoginForm');
-    Route::post('login', 'PartnerController@login');
-    Route::get('logout', 'PartnerController@logout');
+    // Route::auth();
+    Route::get('login', 'Auth\Admin\AuthController@showLoginForm');
+    Route::post('login', 'Auth\Admin\AuthController@login');
+    Route::get('logout', 'Auth\Admin\AuthController@logout');
     
     // // Registration Routes...
-    Route::get('register', 'PartnerController@showRegistrationForm');
-    Route::post('register', 'PartnerController@register');
+    Route::get('register', 'Auth\Admin\AuthController@showRegistrationForm');
+    Route::post('register', 'Auth\Admin\AuthController@register');
     
-    // // Password Reset Routes...
-    // Route::get('password/reset/{token?}', 'Auth\PasswordController@showResetForm');
-    // Route::post('password/email', 'Auth\PasswordController@sendResetLinkEmail');
-    // Route::post('password/reset', 'Auth\PasswordController@reset');
+    // Password Reset Routes...
+    // Route::get('password/reset/{token?}', 'Auth\Admin\PasswordController@showResetForm');
+    // Route::post('password/email', 'Auth\Admin\PasswordController@sendResetLinkEmail');
+    // Route::post('password/reset', 'Auth\Admin\PasswordController@reset');
+});
+
+/* Partners authenticate */
+Route::group(['prefix'=>'partner'], function(){
+
+    // Route::get('profile', ['middleware'=>'auth', 'uses'=>'PartnerController@profile'])->name('partner.profile');
+    Route::post('loginSocial', 'Auth\Partner\AuthController@loginSocial');
+    // Authentication Routes...
+    // Route::get('login', 'Auth\Partner\AuthController@showLoginForm');
+    // Route::post('login', 'Auth\Partner\AuthController@login');
+    Route::get('logout', 'Auth\Partner\AuthController@logout');
+    // // Registration Routes...
+    // Route::get('register', 'Auth\Partner\AuthController@showRegistrationForm');
+    // Route::post('register', 'Auth\Partner\AuthController@register');
+    
+    // Password Reset Routes...
+    // Route::get('password/reset/{token?}', 'Auth\Partner\AuthController@showResetForm');
+    // Route::post('password/email', 'Auth\Partner\AuthController@sendResetLinkEmail');
+    // Route::post('password/reset', 'Auth\Partner\AuthController@reset');
 });

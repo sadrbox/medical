@@ -77,7 +77,7 @@ return [
     ],
     'string'               => 'The :attribute must be a string.',
     'timezone'             => 'The :attribute must be a valid zone.',
-    'unique'               => 'Веденные данные :attribute уже существует в базе.',
+    'unique'               => 'Введенные данные :attribute уже существует в базе.',
     'url'                  => 'The :attribute format is invalid.',
 
     /*
@@ -115,6 +115,7 @@ return [
         'price' => '«Цена»',
         'category_id' => '«Категория»',
         'name' => '«Имя»',
+        'username' => '«Имя пользователя»',
         'email' => '«Электронная почта»',
         'password' => '«Пароль»',
         ],

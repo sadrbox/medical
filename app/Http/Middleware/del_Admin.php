@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
-class Authenticate
+class Admin
 {
     public function handle($request, Closure $next, $guard = null)
     {
@@ -13,18 +13,9 @@ class Authenticate
             if ($request->ajax() || $request->wantsJson()) {
                 return response('Unauthorized.', 401);
             } else {
-                if($guard == 'admin'){
-                    return redirect()->guest('admin/login');
-                }
-                elseif($guard == 'partner'){
-                    return redirect()->guest('partner/login');
-                }
-                else{
-                    return redirect()->guest('/');
-                }
+                return redirect()->guest('admin/login');
             }
         }
-        if($guard) Auth::shouldUse($guard);
 
         return $next($request);
     }

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('content')
 <div class="container">
@@ -37,12 +37,12 @@
                                     <textarea name="text" id="editor" class="form-control" rows="20">{{$page->text}}</textarea>
                                 </div>
                                 <div class="form-group">
-                                    <label for="navigation">Вывести в панель навигации</label>
                                     <input type="checkbox" name="navigation" value="1" {{ ($page->navigation == 1) ? 'checked' : '' }} />
+                                    <label for="navigation">Вывести в панель навигации</label>
                                 </div>
-                                <div class="form-group">
-                                    <label for="main_page">Вывести на главную страницу</label>
+
                                     <input type="checkbox" name="main_page" value="1" {{ ($page->main_page == 1) ? 'checked' : '' }} />
+                                    <label for="main_page">Вывести на главную страницу</label>
                                 </div>
                             </div>
                         </div>

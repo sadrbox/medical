@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "c4022e9b6de19a1ed17f802215d8face",
+    "content-hash": "d984786a7f2f4e34b86ffb9691d04cb5",
     "packages": [
         {
             "name": "classpreloader/classpreloader",
@@ -59,6 +59,87 @@
                 "preload"
             ],
             "time": "2017-12-10T11:40:39+00:00"
+        },
+        {
+            "name": "digitaldream/dbreader",
+            "version": "1.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/digitaldreams/dbreader.git",
+                "reference": "54bfe8e024a91e536d629bf2a04e3adc6a9ef496"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/digitaldreams/dbreader/zipball/54bfe8e024a91e536d629bf2a04e3adc6a9ef496",
+                "reference": "54bfe8e024a91e536d629bf2a04e3adc6a9ef496",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "DbReader\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Tuhin",
+                    "email": "digitaldreams40@gmail.com"
+                }
+            ],
+            "description": "Database Reader",
+            "time": "2017-09-18T17:06:51+00:00"
+        },
+        {
+            "name": "digitaldream/laracrud",
+            "version": "2.1.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/digitaldreams/laracrud.git",
+                "reference": "6d5a5e0d87caa6c9ae9c748db27def8095e9124e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/digitaldreams/laracrud/zipball/6d5a5e0d87caa6c9ae9c748db27def8095e9124e",
+                "reference": "6d5a5e0d87caa6c9ae9c748db27def8095e9124e",
+                "shasum": ""
+            },
+            "require": {
+                "digitaldream/dbreader": "~1.0",
+                "laravel/framework": ">=5.1.1",
+                "php": ">=5.5.9"
+            },
+            "suggest": {
+                "intervention/image": "For Image"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "LaraCrud\\": "src/lara-crud/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Tuhin Bepari",
+                    "email": "digitaldreams40@gmail.com",
+                    "homepage": "http://www.tuhinbepari.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "CRUD means CREATE, READ, UPDATE AND DELTE are common work in almost every web application. Laravel has also CRUD. We use Model, View, Controller, Request, Route's for CRUD. A well structured database are the blueprint of a web application. So We can create Model, View, Controller, Request from a database table",
+            "homepage": "https://github.com/digitaldreams/laracrud",
+            "keywords": [
+                "crud",
+                "laravel"
+            ],
+            "time": "2017-12-16T09:42:21+00:00"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -159,6 +240,122 @@
                 "string"
             ],
             "time": "2015-11-06T14:35:42+00:00"
+        },
+        {
+            "name": "guzzlehttp/guzzle",
+            "version": "6.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/guzzle/guzzle.git",
+                "reference": "f4db5a78a5ea468d4831de7f0bf9d9415e348699"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/f4db5a78a5ea468d4831de7f0bf9d9415e348699",
+                "reference": "f4db5a78a5ea468d4831de7f0bf9d9415e348699",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/promises": "^1.0",
+                "guzzlehttp/psr7": "^1.4",
+                "php": ">=5.5"
+            },
+            "require-dev": {
+                "ext-curl": "*",
+                "phpunit/phpunit": "^4.0 || ^5.0",
+                "psr/log": "^1.0"
+            },
+            "suggest": {
+                "psr/log": "Required for using the Log middleware"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "6.2-dev"
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/functions_include.php"
+                ],
+                "psr-4": {
+                    "GuzzleHttp\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Michael Dowling",
+                    "email": "mtdowling@gmail.com",
+                    "homepage": "https://github.com/mtdowling"
+                }
+            ],
+            "description": "Guzzle is a PHP HTTP client library",
+            "homepage": "http://guzzlephp.org/",
+            "keywords": [
+                "client",
+                "curl",
+                "framework",
+                "http",
+                "http client",
+                "rest",
+                "web service"
+            ],
+            "time": "2017-06-22T18:50:49+00:00"
+        },
+        {
+            "name": "guzzlehttp/promises",
+            "version": "v1.3.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/guzzle/promises.git",
+                "reference": "a59da6cf61d80060647ff4d3eb2c03a2bc694646"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/guzzle/promises/zipball/a59da6cf61d80060647ff4d3eb2c03a2bc694646",
+                "reference": "a59da6cf61d80060647ff4d3eb2c03a2bc694646",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.4-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "GuzzleHttp\\Promise\\": "src/"
+                },
+                "files": [
+                    "src/functions_include.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Michael Dowling",
+                    "email": "mtdowling@gmail.com",
+                    "homepage": "https://github.com/mtdowling"
+                }
+            ],
+            "description": "Guzzle promises library",
+            "keywords": [
+                "promise"
+            ],
+            "time": "2016-12-20T10:07:11+00:00"
         },
         {
             "name": "guzzlehttp/psr7",
