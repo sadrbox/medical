@@ -9,16 +9,27 @@
                     <table class="list-products">
                         @foreach($products as $product)
                         <tr>
-                            <td>
+                            <td style="width:130px;vertical-align:top">
                                 <?php 
                                     $path_img = public_path('img/products/'.$product->img);
-                                    $url_img = \App\Tools::getpreview32(public_path('img/products/'.$product->img));
+                                    $url_img = \App\Tools::getpreview128(public_path('img/products/'.$product->img));
                                 ?>
                                 @if($url_img)
                                 <img class="img-thumbnail" src="{{ $url_img }}" />
-                                @endif                                    
+                                @endif
                             </td>
-                            <td>{{ link_to_route('site.product.show', str_limit($product->title, 300), [$product->id]) }}</td>
+                            <td>
+                                <b>{{ link_to_route('site.product.show', str_limit($product->title, 300), [$product->id]) }}</b>
+                                <div>{{ str_limit(strip_tags($product->description), 300) }}</div>
+                                <div style="border-top:1px dotted #CCC;margin:10px 0">
+                                    Цена: {{ $product->price }} 
+                                    @if(Auth::guard('admin')->check())
+                                        {{ '| Цена партнера: '.$product->price_partner }}
+                                    @elseif(Auth::guard('partner')->check())
+                                        {!! auth()->guard('partner')->user()->verified_partner ? '| Цена партнера: '.$product->price_partner  : '| <a href="/site/formcallme">Получить уникальную цену</a>' !!}
+                                    @endif
+                                </div>
+                            </td>
                         </tr>
                         @endforeach 
                     </table>

@@ -58,6 +58,33 @@
                 </div>
             </div>
         </div>
+        <div class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">Партнеры</div>
+                <div class="panel-body">
+                    <table class="table">
+                        <tr>
+                            <th style="width:60px">Статус</th>
+                            <th></th>
+                            <th>Nickname</th>
+                            <th>{{ trans('app.email') }}</th>
+                            <th>{{ trans('app.phone') }}</th>
+                        </tr>
+                        @foreach($partners as $partner)
+                        <tr>
+                            <td>
+                                <input disabled="disabled" class="done" type="checkbox" style="height:30px;width:30px;"  link="{{url()->route('admin.partner.partnership', ['partner'=>$partner->id])}}" {{ ($partner->verified_partner == true) ? 'checked' : '' }} />
+                            </td>
+                            <td><img class="avatar32" src="{{ $partner->photo }}" /></td>
+                            <td><a href="{{url()->route('admin.partner.edit', ['partner'=>$partner->id])}}">{{ $partner->username }}</a></td>
+                            <td>{{ $partner->email }}</td>
+                            <td>{{ $partner->phone }}</td>
+                        </tr>
+                        @endforeach    
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 <style>

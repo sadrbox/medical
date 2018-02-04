@@ -13,6 +13,7 @@
                             <th>Наименование</th>
                             <th>Категория</th>
                             <th>Цена</th>
+                            <th>Цена партнера</th>
                             <th></th>
                         </tr>
                         @foreach($products as $product)
@@ -29,6 +30,7 @@
                             <td>{{ str_limit($product->title, 50) }} </td>
                             <td>{{ $product->category->title or "-" }}</td>
                             <td>{{ $product->price }}</td>
+                            <td>{{ $product->price_partner }}</td>
                             <td>
                                 <div class="pull-right text-nowrap">
                                     {!! Form::open(array('route'=>['admin.product.destroy',$product->id],'method'=>'DELETE')) !!}

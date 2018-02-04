@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests;
-
+use App\Http\Requests\PartnerRequest;
 use App\Partner;
 
 class PartnerController extends Controller
@@ -13,7 +13,7 @@ class PartnerController extends Controller
     public function __construct()
     {
         session()->forget('breadcrumbs');
-        $this->Breadcrumbs(trans('app.panel'));
+        $this->Breadcrumbs(trans('app.panel'), 'admin.index');
     }
     
     public function index()
@@ -33,16 +33,27 @@ class PartnerController extends Controller
     
     public function profile(Partner $partner)
     {
-        //
+        $this->Breadcrumbs(trans('app.partner'), 'admin.partner.index');
+        $this->Breadcrumbs(trans('app.edit'));
+        return view('admin.partners.edit', compact('partner'));
+    }    
+    
+    public function edit(Partner $partner)
+    {
+        $this->Breadcrumbs(trans('app.partner'), 'admin.partner.index');
+        $this->Breadcrumbs(trans('app.edit'));
+        return view('admin.partners.edit', compact('partner'));
     }
 
-    public function update(Request $request, $id)
+    public function update(PartnerRequest $request, Partner $partner)
     {
-        //
+        $partner->update($request->all());
+        return redirect()->route('admin.partner.index')->with('message', 'Изменения сохранены!');
     }
 
-    public function destroy($id)
+    public function destroy(Partner $partner)
     {
-        //
+        $partner->delete();
+        return redirect()->route('admin.partner.index')->with(['message'=>'Удаление выполнено!', 'type'=>'success']);
     }
 }

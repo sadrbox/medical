@@ -52,9 +52,9 @@ return [
     ],
     'mimes'                => 'The :attribute must be a file of type: :values.',
     'min'                  => [
-        'numeric' => 'The :attribute must be at least :min.',
+        'numeric' => 'Поел :attribute должен быть не менее :min.',
         'file'    => 'The :attribute must be at least :min kilobytes.',
-        'string'  => 'The :attribute must be at least :min characters.',
+        'string'  => 'Поле :attribute должен быть не менее :min символов.',
         'array'   => 'The :attribute must have at least :min items.',
     ],
     'not_in'               => 'The selected :attribute is invalid.',
@@ -118,6 +118,7 @@ return [
         'username' => '«Имя пользователя»',
         'email' => '«Электронная почта»',
         'password' => '«Пароль»',
+        'phone' => '«Телефон»',
         ],
 
 ];

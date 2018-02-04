@@ -41,6 +41,10 @@
                                     <label for="price">Цена</label>
                                     <input type="text" name="price" class="form-control"  value="{{$product->price}}" />
                                 </div>
+                                <div class="form-group {{($errors->has('price_partner')) ? 'has-error' : '' }}">
+                                    <label for="price_partner">Цена партнера</label>
+                                    <input type="text" name="price_partner" class="form-control" value="{{$product->price}}" />
+                                </div>
                                 <div class="form-group">
                                     <div class="product_image" style="background-image: url({{$product->image}})">
                                         @if (empty($product->image))
@@ -93,36 +97,6 @@ $(function(){
     }
     $("[name=image]").change(function() {
       readURL(this);
-    });
-    
-    /* Wysiwyg */
-    tinymce.init({ 
-        selector:'textarea', 
-        language_url : '/extensions/tinymce/langs/ru.js',
-        plugins: 'image imagetools code table fullscreen',
-        toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright | outdent indent | table | link image editimage | fullscreen',
-
-        relative_urls: false,
-        images_upload_handler: function (blobInfo, success, failure) {
-            
-            formData = new FormData();
-            formData.append('image', blobInfo.blob(), blobInfo.filename());
-  
-            $.ajax({
-                url: "/admin/upload",
-                type: "POST",
-                data: formData,
-                success: function (response) {
-                    var obj = JSON.parse(response);
-                    // var aasd = JSON.parse(obj.url);
-                    console.log(obj.url);
-                    success(obj.url);
-                },
-                cache: false,
-                contentType: false,
-                processData: false
-            });
-        }
     });
 });
 </script>

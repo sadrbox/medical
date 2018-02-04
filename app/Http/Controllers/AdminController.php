@@ -9,6 +9,7 @@ use App\Article;
 use App\Page;
 use App\Product;
 use App\Call;
+use App\Partner;
 
 use Intervention\Image\ImageManagerStatic as Image;
 
@@ -24,10 +25,11 @@ class AdminController extends Controller
     public function index()
     {
         $articles = Article::with('Category')->orderBy('created_at','desc')->limit(5)->get();
-        $calls = Call::orderBy('done')->limit(5)->get();
+        $calls = Call::orderBy('done')->limit(5)->get();        
+        $partners = Partner::orderBy('created_at','desc')->limit(5)->get();
         
         
-        return view('admin.index', compact('articles', 'calls'));
+        return view('admin.index', compact('articles', 'calls', 'partners'));
     }
     
     public function upload(Request $request)

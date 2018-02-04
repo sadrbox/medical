@@ -7,7 +7,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">{{ trans('app.partner') }}</div>
                 <div class="panel-body">
-                    <table class="table"> 
+                    <table class="table">
                         <tr>
                             <th style="width:60px">Статус</th>
                             <th></th>
@@ -24,7 +24,7 @@
                             <td>
                                 <input disabled="disabled" class="partnership" type="checkbox" style="height:30px;width:30px;"  link="{{url()->route('admin.partner.partnership', ['partner'=>$partner->id])}}" {{ ($partner->verified_partner == true) ? 'checked' : '' }} />
                             </td>
-                            <td><img class="avatar" src="{{ $partner->photo }}" /></td>
+                            <td><img class="avatar32" src="{{ $partner->photo }}" /></td>
                             <td>{{ $partner->email }}</td>
                             <td>{{ $partner->network }}</td>
                             <td>{{ $partner->username }}</td>
@@ -33,9 +33,18 @@
                             <td>{{ date('d.m.Y', strtotime($partner->created_at)) }}</td>
                             <td>
                                 <div class="pull-right text-nowrap">
-                                    <a href="{{url()->route('admin.partner.profile', ['partner'=>$partner->id])}}" class="img-circle btn btn-primary"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a> 
+                                    {!! Form::open(array('route'=>['admin.partner.destroy',$partner->id],'method'=>'DELETE')) !!}
+                                    {!! Form::hidden('username', $partner->username); !!}
+                                        <a href="{{url()->route('admin.partner.edit', ['partner'=>$partner->id])}}" class="img-circle btn btn-primary"><i class="fa fa-pencil"></i></a> 
+                                        <a class="delete_link btn btn-danger"><i class="fa fa-trash"></i></a>
+                                    {!! Form::close() !!}
                                 </div>
                             </td>
+                            <!--<td>-->
+                            <!--    <div class="pull-right text-nowrap">-->
+                            <!--        <a href="{{url()->route('admin.partner.profile', ['partner'=>$partner->id])}}" class="img-circle btn btn-primary"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a> -->
+                            <!--    </div>-->
+                            <!--</td>-->
                         </tr>
                         @endforeach    
                     </table>
@@ -68,6 +77,31 @@ $(function(){
         var link = $check.attr('link');
         $('[type=checkbox]').attr('disabled','disabled');
         window.location.href = link;
+    });
+    
+    $(".delete_link").on('click', function(event){
+        event.preventDefault();
+        var $form = $(this).parent("form");
+        var $value = $form.children("[name=username]").val();
+        $.confirm({
+            title: 'Предупреждение',
+            content: 'Удалить элемент - '+$value+' ?',
+            theme: 'dark',
+            buttons: {
+                yes: {
+                    text: 'Удалить',
+                    btnClass: 'btn-red',
+                    keys: ['enter'],
+                    action: function(){
+                        $form.submit();
+                    }
+                },
+                no: {
+                    text: 'Отмена',
+                    keys: ['esc'],
+                },
+            }
+        });  
     });
 });
 </script>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use Illuminate\Http\Request;
+use Validator;
 use App\Category;
 use App\Article;
 use App\Page;
@@ -96,6 +97,20 @@ class SiteController extends Controller
     
     public function queryCallMe(Request $request)
     {
+        // 'name' => 'required',
+        // 'phone' => 'required|min:11',
+        
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'phone' => 'required|min:11',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect('site/')
+                        ->withErrors($validator)
+                        ->withInput();
+        }
+        
         Call::create($request->all());
         return redirect()->route('site.formcallme')->with('message', 'Ожидайте звнока.<br> Мы обязательно Вам перезвоним!');
     }

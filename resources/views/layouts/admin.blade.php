@@ -52,6 +52,8 @@
                           <ul class="dropdown-menu">
                             <li role="separator" class="divider"></li>
                             <li><a href="{{ url()->route('admin.category.index') }}">{{ trans('app.category') }}</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="{{ url()->route('admin.offer.index') }}">{{ trans('app.offer') }}</a></li>
                           </ul>
                         </li>
                     </ul>
@@ -91,6 +93,38 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
+            
+            /* Wysiwyg */
+            tinymce.init({ 
+                selector:'textarea', 
+                language_url : '/extensions/tinymce/langs/ru.js',
+                plugins: 'image imagetools code table fullscreen lists',
+                toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright | outdent indent | table | numlist bullist | link image editimage | fullscreen',
+        
+                relative_urls: false,
+                images_upload_handler: function (blobInfo, success, failure) {
+                    
+                    formData = new FormData();
+                    formData.append('image', blobInfo.blob(), blobInfo.filename());
+          
+                    $.ajax({
+                        url: "/admin/upload",
+                        type: "POST",
+                        data: formData,
+                        success: function (response) {
+                            var obj = JSON.parse(response);
+                            // var aasd = JSON.parse(obj.url);
+                            console.log(obj.url);
+                            success(obj.url);
+                        },
+                        cache: false,
+                        contentType: false,
+                        processData: false
+                    });
+                }
+            });
+            
+            
     	});
     	
         function initialise()

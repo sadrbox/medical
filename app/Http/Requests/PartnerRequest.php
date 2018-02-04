@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
-class CallRequest extends Request
+class PartnerRequest extends Request
 {
     public function authorize()
     {
@@ -14,9 +14,8 @@ class CallRequest extends Request
     public function rules()
     {
         return [
-            'name' => 'required',
-            'phone' => 'required|min:11',
-            // 'done' => 'required',
+            // 'title' => 'required',
+            // 'parent_id' => 'required',
         ];
     }
 }

@@ -30,13 +30,15 @@ Route::group(['prefix'=>'admin','middleware'=>'auth:admin'], function(){
     Route::resource('product', 'ProductController');
     Route::resource('category', 'CategoryController');
     Route::resource('call', 'CallController');
+    Route::resource('partner', 'PartnerController');
+    Route::resource('offer', 'OfferController');
     Route::get('call/done/{call}', 'CallController@done')->name('admin.call.done');
     
     /******************************/
-    Route::get('partner', 'PartnerController@index')->name('admin.partner.index');
+    // Route::get('partner', 'PartnerController@index')->name('admin.partner.index');
     Route::get('partner/partnership/{partner}', 'PartnerController@partnership')->name('admin.partner.partnership');
     Route::get('partner/profile/{partner}', 'PartnerController@profile')->name('admin.partner.profile');
-    Route::post('partner/destroy', 'PartnerController@destroy')->name('admin.partner.destroy');
+    // Route::post('partner/destroy', 'PartnerController@destroy')->name('admin.partner.destroy');
 });
 
 /* Models manager in partners*/

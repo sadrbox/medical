@@ -12,7 +12,11 @@
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="/css/style.css?<?php echo time(); ?>" />
-
+    
+    <!--// owlcarousel-->
+    <link rel="stylesheet" href="/extensions/owlcarousel/dist/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="/extensions/owlcarousel/dist/assets/owl.theme.default.min.css">    
+    
     <!-- Styles -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
@@ -24,17 +28,6 @@
 </head>
 <body>
 <div id="app-layout">
-    <!--<div>-->
-    <!--    <a href="{{ url('/partner/login') }}">partner login</a> | -->
-    <!--    <a href="{{ url('/partner/register') }}">partner register</a> | -->
-    <!--    <a href="{{ url('/partner/logout') }}">partner logout</a>-->
-    <!--</div>    -->
-    <!--<div>-->
-    <!--    <a href="{{ url('/admin/login') }}">admin login</a> | -->
-    <!--    <a href="{{ url('/admin/register') }}">admin register</a> | -->
-    <!--    <a href="{{ url('/admin/logout') }}">admin logout</a>-->
-    <!--</div>-->
-
     <section class="header">
         <div class="bgimg">
             <div class="company"> 
@@ -55,15 +48,35 @@
                     </div>
                 </div>
                 @if (request()->is('/') || request()->is('site'))
-                <br>
-                <br>
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
-                            <h1 class="business-slogan">Здесь уникальное торговое предложение (оффер)</h1>
+                            <div class="offer owl-carousel">
+                            @foreach (App\Offer::all() as $offer)
+                                <div>
+                                    <h1 class="business-slogan">{{ $offer->title }}</h1>
+                                    <p>{!! str_limit($offer->text, 300) !!}</p>
+                                </div>
+                            @endforeach
+                            </div>
                         </div>
                     </div>
                 </div>
+                <style>
+                    .offer .owl-stage-outer{
+                        margin:50px 0 30px 0;
+                        border-radius:2px;
+                        background: linear-gradient( rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+                        height:100%;
+                        display: flex;
+                        justify-content: center;
+                        flex-direction: column;
+                    }
+                    .offer .owl-item div{
+                        padding:30px;
+                    }
+
+                </style>
                 @endif
             </div>
         </div>
@@ -93,6 +106,8 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                                 {{ trans('app.product') }}<span class="caret"></span></a>
                             <ul class="dropdown-menu">
+                                <li role="separator" class="divider"></li>
+                                <li><a href="{{ url()->route('site.product') }}">Все категории</a></li>
                                 @foreach (App\Category::has('products')->get() as $navbar_product_category)
                                 <li role="separator" class="divider"></li>
                                 <li><a href="{{ url()->route('site.product', ['category'=>$navbar_product_category->id]) }}">{{ $navbar_product_category->title }}</a></li>
@@ -124,6 +139,50 @@
         @include('layouts.messages')
         @yield('content')
     </section>
+    @if (request()->is('/') || request()->is('site'))
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card-product owl-carousel">
+                @foreach (App\Product::inRandomOrder()->get() as $product)
+                    <div class="card-product-container">
+                        <img src="{{ \App\Tools::getpreview256(public_path('img/products/'.$product->img)) }}" />
+                        <div class="border-line"></div>
+                        <a href="{{ url()->route('site.product.show', ['product'=>$product->id]) }}">{{ $product->title }}</a>
+                        <div class="border-line"></div>
+                        <p>{!! str_limit(strip_tags($product->description), 100) !!}</p>
+                    </div>
+                @endforeach
+                </div>
+            </div>
+        </div>
+    </div>
+    <style>
+        .card-product .owl-stage-outer{
+            margin:50px 0 30px 0;
+        }
+        .card-product .owl-item{
+            height:100%;
+            /*padding:5px;*/
+        }
+        .card-product-container{
+            height:350px;
+            margin:0 15px 0 0px;
+            padding:5px;
+            border:1px solid #ccc;
+            border-radius:2px;
+            /*box-shadow:0 0 10px 2px #000;*/
+        }
+        .card-product-container a, .card-product-container p{
+            font-size:15px;
+        }
+        .card-product-container .border-line{
+            border-top:1px solid #CCC;
+            margin:5px 0;
+        }
+
+    </style>
+    @endif
     <section class="footer">
         <br>
         <div class="container">
@@ -132,16 +191,12 @@
                     <p>Республика Казахстан, г. Алматы, A05C9Y3 ул.Гоголя, 111, уг. ул.Наурызбай батыра</p>
                 </div>
                 <div class="col-md-3">
-                    @if( ! Auth::guard('partner')->check())
+                    @if( ! Auth::guard('partner')->check() && ! Auth::guard('admin')->check())
                     <a class="pull-right" href="{{ url('/admin') }}">Администратор</a>
                     @endif
                 </div>
             </div>
         </div>
-        <br>
-        <br>
-        <br>
-        
     </section>
 </div>
     @yield('template')
@@ -157,6 +212,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js"></script>
     
+    <!-- https://owlcarousel2.github.io/OwlCarousel2/docs/started-installation.html  -->
+    <script type="text/javascript" src="/extensions/owlcarousel/dist/owl.carousel.min.js"></script>
+    
     <!-- wysiwyg-->
     <script src="/extensions/tinymce/tinymce.min.js"></script>
     
@@ -169,6 +227,22 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
+            
+            $(".offer").owlCarousel({
+                items:1,
+                loop: true,
+                autoplay: true,
+                autoplayTimeout: 2000,
+            });     
+            
+            $(".card-product").owlCarousel({
+                items:6,
+                loop: true,
+                autoplay: true,
+                autoplayTimeout: 2000,
+            });
+            
+            
     	});
     	
         function initialise()

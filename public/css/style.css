@@ -110,7 +110,7 @@ section.footer{
 }
 
 .bgimg {
-    background: linear-gradient( rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.6)), url(/img/bgmed.jpg);
+    background: linear-gradient( rgba(0, 100, 100, 0.6), rgba(0, 0, 0, 0.6)), url(/img/bgmed.jpg);
     background-size: auto;
     background-repeat: no-repeat;
     background-position: top center;
@@ -158,9 +158,9 @@ section.footer{
 }
 .business-slogan {
     color: #fff;
-    font-size: 80px;
+    font-size: 50px;
     padding: 0px;
-    margin: 0px;
+    margin: 0px 0 10px 0;
     line-height: 1.2;
     font-weight: 600;
     /*text-transform: uppercase;*/
@@ -280,7 +280,7 @@ section.footer{
      text-indent: 30px;
 } 
 .show-post img{
-    margin:20px;
+    margin-bottom:20px;
     padding: 4px;
     background-color: #fff;
     border: 1px solid #ddd;
@@ -348,7 +348,11 @@ input[type=checkbox], input[type=radio]{
     padding-top:10px;
 }
 
-.avatar{
+.avatar32{
     max-height: 32px;
     max-width: 32px;
+}
+.avatar50{
+    max-height: 50px;
+    max-width: 50px;
 }

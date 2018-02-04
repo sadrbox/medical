@@ -15,7 +15,7 @@
                     <form action="{{ url()->route('site.querycallme') }}" method="POST" class="call-form">
                         {{csrf_field()}}
                         <div class="form-group">
-                            <h2>Хочешь узнать больше?</h2>
+                            <h3>Мы Вам перезвоним.</h3>
                             <hr>
                         </div>
                         <br>
@@ -33,7 +33,7 @@
                     <br>
                     <br>
                     <div class="form-group" style="text-align:center;">
-                        <a href="{{ url()->route('site.index') }}" class="btn btn-close-call"><i class="fa fa-times-circle-o" aria-hidden="true"></i></a>
+                        <a href="{{ url()->previous() }}" class="btn btn-close-call"><i class="fa fa-times-circle-o" aria-hidden="true"></i></a>
                     </div>
                 </div>
             </div>

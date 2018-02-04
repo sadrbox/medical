@@ -6,6 +6,36 @@ use Intervention\Image\ImageManagerStatic as Image;
 
 class Tools
 {
+    public static function getpreview256($path)
+    {
+        if(is_file($path))
+        {
+            $image        = $path;
+            $image_resize = Image::make($image);              
+            $image_resize->resize(256, 256, function ($constraint) {
+                // $constraint->aspectRatio();
+            });
+            $url = $image_resize->encode('data-url');
+            return $url;
+        }
+        return false;
+    }    
+    
+    public static function getpreview128($path)
+    {
+        if(is_file($path))
+        {
+            $image        = $path;
+            $image_resize = Image::make($image);              
+            $image_resize->resize(128, 128, function ($constraint) {
+                // $constraint->aspectRatio();
+            });
+            $url = $image_resize->encode('data-url');
+            return $url;
+        }
+        return false;
+    }      
+    
     public static function getpreview64($path)
     {
         if(is_file($path))

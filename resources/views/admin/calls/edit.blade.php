@@ -34,7 +34,7 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <button type="submit" class="btn btn-primary"><i class="fa fa-floppy-o mr-10" aria-hidden="true"></i>Сохранить</button>
-                                <a href="{{url()->route('admin.category.index')}}" class="btn btn-default">Закрыть</a>
+                                <a href="{{url()->route('admin.call.index')}}" class="btn btn-default">Закрыть</a>
                             </div>
                             <div class="col-md-8"></div>
                         </div>    

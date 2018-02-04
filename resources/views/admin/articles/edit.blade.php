@@ -34,7 +34,7 @@
                             <div class="col-md-12">
                                 <div class="form-group {{($errors->has('text')) ? 'has-error' : '' }}">
                                     <label for="text">Текст</label>
-                                    <textarea name="text" id="editor" class="form-control" rows="20">{{$article->text}}</textarea>
+                                    <textarea name="text" class="form-control" rows="20">{{$article->text}}</textarea>
                                 </div>
                                 <div class="form-group">
                                     <input type="checkbox" name="main_page" value="1" {{ ($article->main_page == 1) ? 'checked' : '' }} />
@@ -43,7 +43,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="panel-footer">
+                    <div class="panel-footer"> 
                         <div class="row">
                             <div class="col-md-4">
                                 <button type="submit" class="btn btn-primary"><i class="fa fa-floppy-o mr-10" aria-hidden="true"></i>Сохранить</button>
@@ -57,40 +57,4 @@
         </div>
     </div>
 </div>
-@endsection
-
-@section('script')
-<script>
-$(function(){
-    /* Wysiwyg */
-    tinymce.init({ 
-        selector:'textarea', 
-        language_url : '/extensions/tinymce/langs/ru.js',
-        plugins: 'image imagetools code table fullscreen',
-        toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright | outdent indent | table | link image editimage | fullscreen',
-
-        relative_urls: false,
-        images_upload_handler: function (blobInfo, success, failure) {
-            
-            formData = new FormData();
-            formData.append('image', blobInfo.blob(), blobInfo.filename());
-  
-            $.ajax({
-                url: "/admin/upload",
-                type: "POST",
-                data: formData,
-                success: function (response) {
-                    var obj = JSON.parse(response);
-                    // var aasd = JSON.parse(obj.url);
-                    console.log(obj.url);
-                    success(obj.url);
-                },
-                cache: false,
-                contentType: false,
-                processData: false
-            });
-        }
-    });
-});
-</script>
 @endsection
