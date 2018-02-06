@@ -124,7 +124,7 @@
                         <li><a href="{{ url('/admin') }}">{{ trans('app.panel') }}</a></li>
                         <li><a href="{{ url('/admin/logout') }}"><i class="fa fa-btn fa-sign-out mr-10"></i>Выход({{ Auth::guard('admin')->user()->username }})</a></li>
                         @elseif(Auth::guard('partner')->check())
-                        <li><a href="{{ url('/partner/profile') }}">{{ trans('app.profile') }}</a></li>
+                        <?php /*<li><a href="{{ url('/partner/profile') }}">{{ trans('app.profile') }}</a></li> */ ?>
                         <li><a href="{{ url('/partner/logout') }}"><i class="fa fa-btn fa-sign-out mr-10"></i>Выход({{ Auth::guard('partner')->user()->username }})</a></li>
                         @else
                         <li>
@@ -182,7 +182,9 @@
         }
 
     </style>
+    
     @endif
+    
     <section class="footer">
         <br>
         <div class="container">

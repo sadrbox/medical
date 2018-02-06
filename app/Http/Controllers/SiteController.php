@@ -68,7 +68,7 @@ class SiteController extends Controller
     {
         $title = trans('app.product');
         $this->Breadcrumbs($title, 'site.product');
-        $categories = Category::with('products')->get();
+        $categories = Category::with('products')->parents()->get();
         if(isset($category->id)){
             $products = Product::with('Category')->where('category_id', '=', $category->id)->paginate(10);
             $this->Breadcrumbs($category->title);

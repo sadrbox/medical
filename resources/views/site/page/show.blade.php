@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="show-post">
-                <h1>{{ $page->title }}</h1>
+                <h1>{{-- $page->title --}}</h1>
                 <p>{!! $page->text !!}</p>
             </div>
         </div>

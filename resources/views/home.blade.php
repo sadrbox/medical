@@ -27,9 +27,9 @@
         <br>
         <br>
         <div class="col-md-12">
-            <h1>{{ $main_page->title }}</h1>
+            <!--<h1>{{ $main_page->title }}</h1>-->
             <div class="home-post-text">{!! $main_page->text !!}</div>    
-                      
+            <!--<a href="{{ url()->route('site.page.show', ['page'=>$main_page->id]) }}">Подробнее...</a>-->
         </div>
     </div>
     <hr>
